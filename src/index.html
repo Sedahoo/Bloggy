@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloggy — A Space for Thinking</title>
+  <meta name="description" content="A personal blog about design, code, and creative thinking. Written with intention, built with care." />
+  <meta name="author" content="Bloggy" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bloggy — A Space for Thinking" />
+  <meta property="og:description" content="A personal blog about design, code, and creative thinking." />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Favicon (inline SVG emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>" />
+
+  <!-- Theme: prevent flash of wrong theme -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('bloggy-theme');
+      document.documentElement.setAttribute('data-theme', saved || 'light');
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo" id="home-link">
+        bloggy<span class="logo-dot">.</span>
+      </a>
+      <nav class="header-nav" id="main-nav">
+        <a href="index.html" id="nav-blog">Blog</a>
+        <a href="https://github.com" target="_blank" rel="noopener" id="nav-github">GitHub</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="hero-section">
+      <div class="hero-content">
+        <h1>bloggy</h1>
+        <p class="hero-description">A mind for me.</p>
+      </div>
+    </section>
+
+    <!-- Posts -->
+    <section class="posts-section site-container" id="posts-section">
+      <div class="posts-section-label">Writing</div>
+      <div class="posts-grid" id="posts-grid">
+        <!-- Skeleton loading state (replaced by JS) -->
+        <div class="loading-skeleton skeleton-card"></div>
+        <div class="loading-skeleton skeleton-card"></div>
+        <div class="loading-skeleton skeleton-card"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-inner">
+      <span class="footer-text">© 2026 bloggy. Built with intention.</span>
+      <div class="footer-links">
+        <a href="https://github.com" target="_blank" rel="noopener" id="footer-github">GitHub</a>
+        <a href="#" id="footer-rss">RSS</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/theme.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
