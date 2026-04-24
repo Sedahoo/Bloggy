@@ -1,0 +1,11 @@
+# Add one movie title per line
+# Lines starting with # are comments and will be skipped
+# Blank lines are also skipped
+
+The Worst Person in the world
+The Kid
+the prestige
+titanic
+Baahubali 2: The Conclusion
+The Godfather
+Dune: Part Two

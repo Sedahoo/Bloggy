@@ -781,6 +781,450 @@ a:hover {
 }
 
 /* ============================================================
+   8b. MOVIES SECTION
+   ============================================================ */
+
+/* Section layout */
+.movies-section {
+  padding: var(--space-2xl) 0 var(--space-4xl);
+}
+
+.movies-section-label {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.movies-section-label::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+}
+
+/* Movies grid — responsive poster grid */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-xl);
+}
+
+.movies-empty {
+  grid-column: 1 / -1;
+}
+
+/* Movie card */
+.movie-card {
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--duration-normal) var(--ease-out),
+              box-shadow var(--duration-normal) var(--ease-out);
+  outline: none;
+}
+
+.movie-card:hover,
+.movie-card:focus-visible {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .movie-card:hover,
+[data-theme="dark"] .movie-card:focus-visible {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Poster wrapper */
+.movie-card-poster-wrap {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-alt);
+}
+
+.movie-card-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.movie-card:hover .movie-card-poster {
+  transform: scale(1.05);
+}
+
+.movie-card-no-poster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-alt);
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+/* Hover overlay */
+.movie-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-lg);
+}
+
+.movie-card:hover .movie-card-overlay {
+  opacity: 1;
+}
+
+.movie-card-overlay-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.movie-card-genre {
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.03em;
+}
+
+.movie-card-runtime {
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Rating badge */
+.movie-card-rating {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: var(--fw-semibold);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.movie-card-star {
+  color: var(--rating-color, #FFC107);
+  font-size: 0.75rem;
+}
+
+/* Card info (below poster) */
+.movie-card-info {
+  padding: var(--space-md) var(--space-xs) var(--space-sm);
+}
+
+.movie-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-normal);
+  font-style: italic;
+  color: var(--color-text-primary);
+  line-height: var(--lh-snug);
+  margin-bottom: 2px;
+  letter-spacing: -0.01em;
+}
+
+.movie-card-year {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Stagger animation for movie cards */
+.movie-card.reveal:nth-child(1) { transition-delay: 0ms; }
+.movie-card.reveal:nth-child(2) { transition-delay: 50ms; }
+.movie-card.reveal:nth-child(3) { transition-delay: 100ms; }
+.movie-card.reveal:nth-child(4) { transition-delay: 150ms; }
+.movie-card.reveal:nth-child(5) { transition-delay: 200ms; }
+.movie-card.reveal:nth-child(6) { transition-delay: 250ms; }
+.movie-card.reveal:nth-child(7) { transition-delay: 300ms; }
+.movie-card.reveal:nth-child(8) { transition-delay: 350ms; }
+
+/* Movie skeleton */
+.movie-skeleton {
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================================
+   8c. MOVIE MODAL
+   ============================================================ */
+.movie-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.movie-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.movie-modal {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  max-width: 820px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+  transform: translateY(20px) scale(0.97);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.movie-modal-overlay.active .movie-modal {
+  transform: translateY(0) scale(1);
+}
+
+.movie-modal-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  z-index: 10;
+  appearance: none;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: border-color var(--duration-fast) ease,
+              color var(--duration-fast) ease,
+              transform var(--duration-fast) var(--ease-out);
+}
+
+.movie-modal-close:hover {
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+  transform: scale(1.08);
+}
+
+.movie-modal-content {
+  padding: var(--space-2xl);
+}
+
+/* Modal layout */
+.movie-modal-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+.movie-modal-poster img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.movie-modal-no-poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.movie-modal-title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-normal);
+  font-style: italic;
+  color: var(--color-text-primary);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-sm);
+}
+
+.movie-modal-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+}
+
+.movie-modal-dot {
+  color: var(--color-text-muted);
+  opacity: 0.4;
+}
+
+/* Rating display */
+.movie-modal-rating {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.movie-modal-star {
+  color: var(--rating-color, #FFC107);
+  font-size: 1rem;
+}
+
+.movie-modal-rating-value {
+  font-family: var(--font-ui);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+}
+
+.movie-modal-rating-label {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+/* Genre tags */
+.movie-modal-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.movie-modal-genre-tag {
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: var(--fw-medium);
+  color: var(--color-tag-text);
+  background: var(--color-tag-bg);
+  padding: 3px var(--space-sm);
+  border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
+}
+
+/* Plot */
+.movie-modal-plot {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: var(--space-xl);
+}
+
+/* Credits */
+.movie-modal-credits {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.movie-modal-credit {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.movie-modal-credit-label {
+  font-family: var(--font-ui);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  min-width: 70px;
+  flex-shrink: 0;
+}
+
+.movie-modal-credit-value {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--color-text-primary);
+  line-height: var(--lh-snug);
+}
+
+/* IMDb link */
+.movie-modal-imdb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-accent);
+  text-decoration: none;
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-full);
+  transition: background var(--duration-fast) ease,
+              color var(--duration-fast) ease;
+}
+
+.movie-modal-imdb-link:hover {
+  background: var(--color-accent);
+  color: #fff;
+  opacity: 1;
+}
+
+/* Nav active state */
+.nav-active {
+  color: var(--color-accent) !important;
+}
+
+/* ============================================================
    9. FOOTER
    ============================================================ */
 .site-footer {
@@ -928,6 +1372,38 @@ a:hover {
   .header-nav {
     gap: var(--space-md);
   }
+
+  /* Movies responsive */
+  .movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-md);
+  }
+
+  .movie-modal-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .movie-modal-poster {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .movie-modal {
+    max-height: 90vh;
+  }
+
+  .movie-modal-content {
+    padding: var(--space-lg);
+  }
+
+  .movie-modal-title {
+    font-size: var(--fs-xl);
+  }
+
+  .movie-card-overlay {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 480px) {
@@ -949,6 +1425,28 @@ a:hover {
   }
 
   .post-card-top {
+    flex-wrap: wrap;
+  }
+
+  /* Movies small screen */
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .movie-card-info {
+    padding: var(--space-sm) 2px var(--space-xs);
+  }
+
+  .movie-card-title {
+    font-size: var(--fs-sm);
+  }
+
+  .movie-modal-overlay {
+    padding: var(--space-sm);
+  }
+
+  .movie-modal-meta {
     flex-wrap: wrap;
   }
 }

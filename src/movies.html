@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post — Bloggy</title>
-  <meta name="description" content="A blog post on Bloggy." />
+  <title>Movies — Bloggy</title>
+  <meta name="description" content="A curated collection of films worth watching. Posters, ratings, and thoughts." />
   <meta name="author" content="Bloggy" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Movies — Bloggy" />
+  <meta property="og:description" content="A curated collection of films worth watching." />
+  <meta property="og:type" content="website" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +41,7 @@
       </a>
       <nav class="header-nav" id="main-nav">
         <a href="index.html" id="nav-blog">Blog</a>
-        <a href="movies.html" id="nav-movies">Movies</a>
+        <a href="movies.html" id="nav-movies" class="nav-active">Movies</a>
         <a href="https://github.com" target="_blank" rel="noopener" id="nav-github">GitHub</a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
       </nav>
@@ -48,31 +50,38 @@
 
   <!-- ===== MAIN ===== -->
   <main>
-    <!-- Post Header -->
-    <article class="content-container">
-      <div class="post-header" id="post-header">
-        <a href="index.html" class="post-back" id="back-link">← Back to all posts</a>
-        <div id="post-header-content">
-          <!-- Populated by post.js -->
-          <div class="loading-skeleton" style="height: 24px; width: 200px; margin-bottom: 16px;"></div>
-          <div class="loading-skeleton" style="height: 48px; width: 80%; margin-bottom: 12px;"></div>
-          <div class="loading-skeleton" style="height: 20px; width: 60%;"></div>
-        </div>
+    <!-- Hero -->
+    <section class="hero" id="movies-hero">
+      <div class="hero-content">
+        <h1>Movies</h1>
+        <p class="hero-description">Films that stayed with me.</p>
       </div>
+    </section>
 
-      <hr class="post-divider" />
-
-      <!-- Post Body -->
-      <div class="prose" id="post-content">
-        <!-- Populated by post.js -->
-        <div class="loading-skeleton" style="height: 18px; width: 100%; margin-bottom: 12px;"></div>
-        <div class="loading-skeleton" style="height: 18px; width: 95%; margin-bottom: 12px;"></div>
-        <div class="loading-skeleton" style="height: 18px; width: 85%; margin-bottom: 24px;"></div>
-        <div class="loading-skeleton" style="height: 18px; width: 100%; margin-bottom: 12px;"></div>
-        <div class="loading-skeleton" style="height: 18px; width: 90%; margin-bottom: 12px;"></div>
+    <!-- Movies Grid -->
+    <section class="movies-section site-container" id="movies-section">
+      <div class="movies-section-label">Collection</div>
+      <div class="movies-grid" id="movies-grid">
+        <!-- Skeleton loading state (replaced by JS) -->
+        <div class="loading-skeleton movie-skeleton"></div>
+        <div class="loading-skeleton movie-skeleton"></div>
+        <div class="loading-skeleton movie-skeleton"></div>
+        <div class="loading-skeleton movie-skeleton"></div>
+        <div class="loading-skeleton movie-skeleton"></div>
+        <div class="loading-skeleton movie-skeleton"></div>
       </div>
-    </article>
+    </section>
   </main>
+
+  <!-- ===== MOVIE MODAL ===== -->
+  <div class="movie-modal-overlay" id="movie-modal-overlay">
+    <div class="movie-modal" id="movie-modal">
+      <button class="movie-modal-close" id="movie-modal-close" aria-label="Close details">&times;</button>
+      <div class="movie-modal-content" id="movie-modal-content">
+        <!-- Populated by movies.js -->
+      </div>
+    </div>
+  </div>
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer" id="site-footer">
@@ -87,7 +96,7 @@
 
   <!-- Scripts -->
   <script src="js/theme.js"></script>
-  <script src="js/post.js"></script>
+  <script src="js/movies.js"></script>
 
 </body>
 </html>
