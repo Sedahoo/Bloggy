@@ -110,5 +110,21 @@
     "language": "English",
     "country": "United States, Canada, United Arab Emirates, Hungary, Italy, New Zealand, Jordan, Gambia",
     "awards": "Won 2 Oscars. 125 wins & 376 nominations total"
+  },
+  {
+    "title": "Marcel the Shell with Shoes On",
+    "year": "2021",
+    "rated": "PG",
+    "runtime": "90 min",
+    "genre": "Animation, Comedy, Drama",
+    "director": "Dean Fleischer Camp",
+    "actors": "Jenny Slate, Dean Fleischer Camp, Isabella Rossellini",
+    "plot": "A cash-strapped documentary maker decides to make his newest documentary about a mollusk shell he finds living in his Airbnb with his friends.",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMmVhYWEzMGEtZjhkYS00ZWE0LTlhOWQtZTRlODZlMTM0Y2JmXkEyXkFqcGc@._V1_SX300.jpg",
+    "imdbRating": "7.6",
+    "imdbID": "tt15339456",
+    "language": "English",
+    "country": "United States",
+    "awards": "Nominated for 1 Oscar. 38 wins & 67 nominations total"
   }
 ]
